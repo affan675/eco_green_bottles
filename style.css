@@ -1,0 +1,800 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-green: #4CAF50; /* Green */
+    --primary-white: #FFFFFF; /* White */
+    --accent-blue: #00BFFF;   /* Blue for water/sustainability */
+    --text-dark: #333333;     /* Dark grey for general text for better readability */
+    --text-medium: #555555;   /* Medium grey for paragraphs */
+    --text-light: #7D7D7D;    /* Soft grey for subtle text blocks */
+    --light-grey-bg: #F8FBF8; /* Very subtle green-tinted light background */
+    --border-radius-soft: 12px;
+    --shadow-soft: 0 5px 20px rgba(0, 0, 0, 0.07); /* Slightly stronger, diffused shadow */
+    --transition-speed: 0.4s ease-in-out; /* Slightly slower for smoother feel */
+    --font-family-poppins: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-poppins);
+    line-height: 1.6;
+    color: var(--text-dark); /* Ensure body text is dark for visibility */
+    background-color: var(--primary-white);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px; /* Slightly more padding on sides */
+}
+
+section {
+    padding: 100px 0; /* Increased consistent padding for all sections */
+    opacity: 0; /* Start hidden for scroll animations */
+    transform: translateY(30px); /* Start slightly further below for slide-in */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Slower, smoother transition */
+}
+
+section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h1, h2, h3 {
+    color: var(--primary-green);
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.5em; /* Slightly larger */
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-dark); /* Ensure main heading is very dark */
+}
+
+h2 {
+    font-size: 2.8em; /* Slightly larger */
+    margin-bottom: 40px;
+    position: relative; /* For potential decorative elements */
+}
+
+h2::after { /* Small underscore for headings */
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-green);
+    margin: 15px auto 0 auto;
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: 1.8em; /* Slightly larger */
+}
+
+p {
+    color: var(--text-medium); /* Default paragraph color */
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-green);
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: var(--accent-blue);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 18px 35px; /* Larger buttons */
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* More prominent letter spacing */
+    transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+    box-shadow: var(--shadow-soft);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.cta-button:hover {
+    background-color: #388E3C; /* Darker green on hover */
+    transform: translateY(-5px); /* More pronounced lift */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Stronger hover shadow */
+}
+
+.section-description {
+    text-align: center;
+    max-width: 850px; /* Wider for more descriptive text */
+    margin: -15px auto 60px auto;
+    font-size: 1.2em; /* Slightly larger */
+    line-height: 1.7;
+    color: var(--text-light); /* Softer color for descriptions */
+}
+
+
+/* --- Header --- */
+.main-header {
+    background-color: var(--primary-white);
+    padding: 20px 0;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08); /* Slightly more prominent shadow */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-placeholder {
+    font-size: 2em; /* Larger logo text */
+    font-weight: 700;
+    color: var(--primary-green);
+    letter-spacing: -0.8px; /* Tighter letter spacing for logo */
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 35px; /* More spacing */
+    align-items: center;
+}
+
+.main-nav ul li a {
+    color: var(--text-medium); /* Ensure text is visible */
+    font-weight: 500;
+    font-size: 1.1em; /* Slightly larger */
+    position: relative;
+    padding-bottom: 5px; /* Space for underline */
+}
+
+.main-nav ul li a:hover {
+    color: var(--primary-green);
+}
+
+.main-nav ul li a::after {
+    height: 3px; /* Thicker underline */
+    background: var(--primary-green);
+}
+
+.nav-cta {
+    padding: 12px 25px; /* Adjust padding for nav CTA */
+    font-size: 0.95em;
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-white) 50%, rgba(220, 255, 220, 0.6) 100%); /* Softer green tint */
+    padding: 120px 0; /* More vertical space */
+    display: flex;
+    align-items: center;
+    min-height: 90vh; /* Take up more viewport height */
+    overflow: hidden;
+    position: relative; /* For absolute positioning of decorative elements */
+}
+
+.hero-section .container {
+    display: flex;
+    justify-content: center; /* Center content when not enough space for space-between */
+    align-items: center;
+    gap: 60px; /* More gap */
+    flex-wrap: wrap-reverse; /* Image above text on small screens */
+}
+
+.hero-content {
+    flex: 1;
+    min-width: 480px; /* Slightly wider content */
+    text-align: left;
+    z-index: 2; /* Ensure content is above decorative elements */
+}
+
+.hero-content h1 {
+    text-align: left;
+    margin-bottom: 25px;
+    font-size: 4.2em; /* Larger heading */
+    color: var(--text-dark);
+}
+
+.hero-content p {
+    font-size: 1.4em; /* Larger paragraph */
+    line-height: 1.8;
+    margin-bottom: 45px;
+    max-width: 650px;
+    color: var(--text-medium);
+}
+
+.hero-image-placeholder {
+    flex: 1;
+    min-width: 400px; /* Wider image placeholder */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-image-placeholder img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-soft);
+    display: block;
+    margin: 0 auto;
+    filter: brightness(1.08) saturate(1.15); /* More vibrant image */
+}
+
+/* Organic shape for hero image - now two layers for more depth */
+.hero-image-placeholder::before,
+.hero-image-placeholder::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+}
+
+.hero-image-placeholder::before {
+    top: -50px;
+    left: -50px;
+    width: 110%;
+    height: 110%;
+    background: var(--primary-green);
+    border-radius: 65% 35% 45% 55% / 55% 35% 65% 45%; /* Slightly different blob */
+    opacity: 0.1;
+    animation: blob-float 10s ease-in-out infinite alternate; /* Subtle animation */
+}
+
+.hero-image-placeholder::after {
+    bottom: -40px;
+    right: -40px;
+    width: 90%;
+    height: 90%;
+    background: var(--accent-blue);
+    border-radius: 30% 70% 70% 30% / 30% 70% 30% 70%; /* Another blob, blue accent */
+    opacity: 0.08;
+    animation: blob-float-reverse 12s ease-in-out infinite alternate; /* Subtle animation */
+}
+
+@keyframes blob-float {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(20px, 10px); }
+}
+
+@keyframes blob-float-reverse {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-15px, -10px); }
+}
+
+/* --- How It Works Section --- */
+.how-it-works-section {
+    background-color: var(--light-grey-bg);
+    padding: 120px 0 100px 0; /* More top padding, less bottom */
+    clip-path: ellipse(120% 80% at 50% 100%); /* Organic bottom edge */
+    margin-bottom: -100px; /* Overlap for smooth transition */
+    position: relative;
+    z-index: 1;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Larger min-width */
+    gap: 50px; /* More gap */
+    margin-top: 60px;
+}
+
+.step-item {
+    text-align: center;
+    background-color: var(--primary-white);
+    padding: 35px; /* More padding */
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-soft);
+    transition: transform var(--transition-speed);
+}
+
+.step-item:hover {
+    transform: translateY(-8px); /* More pronounced lift */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Stronger hover shadow */
+}
+
+.step-icon {
+    font-size: 4em; /* Larger icons */
+    margin-bottom: 25px;
+    color: var(--accent-blue);
+    display: inline-block;
+    background-color: rgba(0, 191, 255, 0.12); /* Slightly more opaque blue background */
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: inset 0 0 0 6px rgba(0, 191, 255, 0.08); /* More defined inner shadow */
+}
+
+.step-item h3 {
+    color: var(--primary-green);
+    margin-bottom: 12px;
+    font-size: 1.5em; /* Larger heading */
+}
+
+.step-item p {
+    font-size: 1.05em; /* Slightly larger text */
+}
+
+/* --- Environmental Impact Counter Section --- */
+.impact-section {
+    background: linear-gradient(180deg, var(--light-grey-bg) 0%, var(--primary-white) 100%);
+    padding-top: 150px; /* Adjusted padding for overlap */
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* Organic top edge */
+    margin-top: -100px; /* To align with how-it-works clip-path */
+    position: relative;
+    z-index: 0;
+    padding-bottom: 120px; /* More bottom padding */
+}
+
+.impact-counters {
+    display: flex;
+    justify-content: center;
+    gap: 80px; /* More gap between counters */
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+.counter-item {
+    text-align: center;
+    flex-basis: 280px; /* Base width */
+    padding: 35px;
+    background-color: var(--primary-white);
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-soft);
+    transition: transform var(--transition-speed);
+}
+
+.counter-item:hover {
+    transform: scale(1.05); /* More pronounced scale */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Stronger hover shadow */
+}
+
+.counter-value {
+    font-size: 4.5em; /* Larger value */
+    font-weight: 700;
+    color: var(--accent-blue);
+    display: block;
+    margin-bottom: 15px;
+    letter-spacing: -3px; /* Tighter spacing for numbers */
+}
+
+.counter-item p {
+    font-size: 1.4em; /* Larger label */
+    font-weight: 500;
+    color: var(--primary-green);
+}
+
+.impact-note {
+    text-align: center;
+    font-size: 1em; /* Slightly larger */
+    color: var(--text-light);
+    margin-top: 50px;
+}
+
+/* --- FAQ Accordion Section --- */
+.faq-section {
+    background-color: var(--primary-white);
+    padding-bottom: 120px; /* More bottom padding */
+}
+
+.accordion {
+    max-width: 900px; /* Wider accordion */
+    margin: 60px auto 0 auto;
+    border-top: 1px solid #e0e0e0; /* Lighter border */
+    border-left: 1px solid #e0e0e0; /* Left border */
+    border-right: 1px solid #e0e0e0; /* Right border */
+    border-radius: var(--border-radius-soft);
+    overflow: hidden; /* Hide overflow of inner borders */
+    box-shadow: var(--shadow-soft);
+}
+
+.accordion-item {
+    border-bottom: 1px solid #e0e0e0; /* Lighter border */
+}
+
+.accordion-item:last-child {
+    border-bottom: none; /* No border on last item */
+}
+
+.accordion-header {
+    background-color: var(--primary-white);
+    color: var(--primary-green);
+    font-size: 1.3em; /* Larger text */
+    font-weight: 600;
+    width: 100%;
+    text-align: left;
+    padding: 25px 30px; /* More padding */
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.accordion-header:hover {
+    background-color: var(--light-grey-bg);
+    color: var(--accent-blue);
+}
+
+.accordion-icon {
+    font-size: 1.8em; /* Larger icon */
+    margin-left: 20px;
+    transition: transform var(--transition-speed);
+    color: var(--text-light);
+}
+
+.accordion-header.active {
+    background-color: var(--primary-green); /* Green background when active */
+    color: var(--primary-white); /* White text when active */
+}
+
+.accordion-header.active .accordion-icon {
+    transform: rotate(45deg);
+    color: var(--primary-white); /* White icon when active */
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out; /* Slower transition */
+    padding: 0 30px; /* Adjust padding for expanded content */
+}
+
+.accordion-content p {
+    padding: 15px 0 25px 0; /* More bottom padding when content expands */
+    color: var(--text-medium);
+    font-size: 1.1em; /* Slightly larger text */
+    line-height: 1.7;
+}
+
+/* --- Testimonials Section --- */
+.testimonials-section {
+    background-color: var(--light-grey-bg);
+    clip-path: ellipse(120% 80% at 50% 0%); /* Organic top edge */
+    padding-top: 150px; /* Adjusted padding for clip-path */
+    margin-top: -100px; /* Overlap with FAQ section */
+    position: relative;
+    z-index: 0;
+    padding-bottom: 120px;
+}
+
+.testimonial-slider {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    max-width: 1000px; /* Wider slider */
+    margin: 60px auto;
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-soft);
+}
+
+.testimonial-item {
+    flex: 0 0 100%;
+    text-align: center;
+    padding: 50px; /* More padding */
+    background-color: var(--primary-white);
+    transition: transform var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 280px; /* Ensure consistent height */
+}
+
+.testimonial-item .quote {
+    font-size: 1.6em; /* Larger quote text */
+    font-style: italic;
+    color: var(--text-dark); /* Darker for better contrast */
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 800px;
+}
+
+.testimonial-item .author {
+    font-weight: 600;
+    color: var(--primary-green);
+    font-size: 1.2em; /* Larger author name */
+}
+
+/* --- Contact Form Section --- */
+.contact-section {
+    background-color: var(--primary-white);
+    padding-top: 120px;
+}
+
+.contact-form {
+    max-width: 650px; /* Wider form */
+    margin: 60px auto 0 auto;
+    padding: 50px; /* More padding */
+    background-color: var(--light-grey-bg);
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-soft);
+}
+
+.form-group {
+    margin-bottom: 25px; /* More space between groups */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: var(--text-medium);
+    font-size: 1.1em; /* Larger label */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 16px; /* More padding */
+    border: 1px solid #ccc; /* Slightly lighter border */
+    border-radius: 8px;
+    font-family: var(--font-family-poppins);
+    font-size: 1.05em; /* Slightly larger text */
+    color: var(--text-dark);
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.25); /* More pronounced focus shadow */
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px; /* Min height for textarea */
+}
+
+.contact-form .cta-button {
+    width: 100%;
+    padding: 20px 0; /* Larger button */
+    font-size: 1.2em;
+    margin-top: 30px;
+}
+
+
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+    padding: 50px 0; /* More padding */
+    text-align: center;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* More gap */
+}
+
+.main-footer p {
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.95); /* Brighter white text */
+    font-size: 1.05em;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.85); /* Brighter white links */
+    margin: 0 20px;
+    font-size: 1em;
+}
+
+.footer-links a:hover {
+    color: var(--primary-white);
+}
+
+/* --- Responsiveness (Media Queries) --- */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 3.2em;
+    }
+    h2 {
+        font-size: 2.4em;
+    }
+    .hero-section .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+    }
+    .hero-content {
+        min-width: unset;
+        text-align: center;
+    }
+    .hero-content h1 {
+        text-align: center;
+    }
+    .hero-image-placeholder {
+        margin-top: 40px;
+        min-width: unset;
+    }
+    .hero-image-placeholder::before,
+    .hero-image-placeholder::after {
+        display: none; /* Hide complex shapes on smaller screens */
+    }
+    .main-nav ul {
+        gap: 20px;
+    }
+    .impact-counters {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+    .counter-item {
+        width: 80%;
+        max-width: 450px;
+    }
+    .how-it-works-section, .impact-section, .testimonials-section {
+        clip-path: none; /* Simplify shapes */
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    section {
+        padding: 80px 0; /* Adjust general section padding */
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px 25px;
+    }
+    .nav-cta {
+        margin-top: 15px;
+    }
+    h1 {
+        font-size: 2.8em;
+    }
+    h2 {
+        font-size: 2.2em;
+    }
+    h2::after {
+        width: 50px;
+        height: 3px;
+        margin-top: 10px;
+    }
+    .section-description {
+        margin-bottom: 40px;
+        font-size: 1.1em;
+    }
+    .hero-content p {
+        font-size: 1.2em;
+    }
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+    .step-icon {
+        font-size: 3.5em;
+        width: 80px;
+        height: 80px;
+    }
+    .counter-value {
+        font-size: 4em;
+    }
+    .counter-item p {
+        font-size: 1.2em;
+    }
+    .accordion-header {
+        font-size: 1.2em;
+        padding: 20px 25px;
+    }
+    .accordion-content p {
+        font-size: 1em;
+        padding: 10px 25px 20px 25px;
+    }
+    .testimonial-item .quote {
+        font-size: 1.4em;
+    }
+    .testimonial-item {
+        padding: 40px;
+    }
+    .contact-form {
+        padding: 40px;
+    }
+    .form-group label {
+        font-size: 1em;
+    }
+    .form-group input, .form-group textarea {
+        padding: 14px;
+    }
+    .contact-form .cta-button {
+        padding: 18px 0;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    h1 {
+        font-size: 2.2em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    h2::after {
+        width: 40px;
+        height: 2px;
+    }
+    .hero-content .cta-button {
+        padding: 15px 30px;
+        font-size: 0.9em;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .main-nav ul li a {
+        font-size: 1em;
+    }
+    .logo-placeholder {
+        font-size: 1.7em;
+    }
+    .step-item {
+        padding: 30px;
+    }
+    .counter-item {
+        padding: 30px;
+    }
+    .accordion-header {
+        font-size: 1.1em;
+        padding: 18px 20px;
+    }
+    .testimonial-item .quote {
+        font-size: 1.2em;
+    }
+    .contact-form {
+        padding: 30px;
+    }
+    .form-group input, .form-group textarea {
+        padding: 12px;
+    }
+    .contact-form .cta-button {
+        padding: 16px 0;
+        font-size: 1em;
+    }
+    .main-footer {
+        padding: 30px 0;
+    }
+    .footer-links a {
+        margin: 0 10px;
+        font-size: 0.9em;
+    }
+}
